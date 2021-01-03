@@ -1,10 +1,22 @@
 public abstract class record {
-    public void save(){
-        this.validate();
-        this.beforeSave();
-        //save to data base
+    final void prepareRecipe() {
+        boilWater();
+        brew();
+        pourInCup();
+        if (customerWantsCondiments()) {
+            addCondiments();
+        }
     }
-    public abstract void validate();
-    public abstract void beforeSave();
+    abstract void brew();
+    abstract void addCondiments();
+    void boilWater() {
+        System.out.println("Boiling water");
+    }
+    void pourInCup() {
+        System.out.println("Pouring into cup");
+    }
+    boolean customerWantsCondiments() {
+        return true;
+    }
 
 }
